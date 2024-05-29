@@ -48,12 +48,11 @@ public class SemanaResource implements SemanaController {
             .body(SemanaParser.toSemanaOut(semana));
     }
 
-    // @Override
-    // @Operation(summary = "Retorna todos os lembretes de uma semana para um usuário", description = "Retorna todos os lembretes de uma semana para um usuário.")
-    // public ResponseEntity<List<LembreteOut>> read_lembretes_semana(@RequestHeader(required = true, name = "id-user") String UserId, @RequestBody LembreteDateIn data) {
-    //     List<LembreteOut> lembretes = semanaService.getLembretes(UserId, data);
-    //     return ResponseEntity.ok(lembretes);
-    // }
+    @Override
+    @Operation(summary = "Retorna todos os lembretes de uma semana para um usuário", description = "Retorna todos os lembretes de uma semana para um usuário.")
+    public ResponseEntity<List<LembreteOut>> read_lembretes_semana(@PathVariable("id_semana") String id_semana, @RequestHeader(required = true, name = "id-user") String UserId) {
+        return semanaService.getLembretes(UserId, id_semana);
+    }
 
     // @Override
     // @Operation(summary = "Atualiza os valores da semana", description = "Atualiza os valores da semana.")

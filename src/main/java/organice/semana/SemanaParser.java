@@ -27,6 +27,7 @@ public class SemanaParser {
                 .data_inicio(semana.dia_inicio())
                 .data_fim(semana.dia_fim())
                 .descricao(semana.descricao())
+                .id_semana(semana.id())
                 .build();
     }
 }
