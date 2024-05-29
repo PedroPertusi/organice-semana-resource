@@ -30,23 +30,23 @@ public class SemanaResource implements SemanaController {
     //     );
     // }
 
-    @Override
-    @Operation(summary = "Criar uma nova semana", description = "Cria uma nova semana e retorna o objeto criado com seu ID.")
-    public ResponseEntity<SemanaOut> create(@RequestHeader(required = true, name = "id-user") String idUser, @RequestBody SemanaIn semanaIn) {
-        System.out.println("Entrou no create");
-        System.out.println(semanaIn.toString());
-        Semana semana = SemanaParser.toSemana(semanaIn);
-        semana.id_usuario(idUser);
-        semana = semanaService.create(semana);
-        System.out.println("teste2: " + semana.id() + " " + semana.dia_inicio() + " " + semana.dia_fim() + " " + semana.descricao() + " " + semana.id_usuario());
-        return ResponseEntity.created(
-            ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(semana.id())
-                .toUri())
-            .body(SemanaParser.toSemanaOut(semana));
-    }
+    // @Override
+    // @Operation(summary = "Criar uma nova semana", description = "Cria uma nova semana e retorna o objeto criado com seu ID.")
+    // public ResponseEntity<SemanaOut> create(@RequestHeader(required = true, name = "id-user") String idUser, @RequestBody SemanaIn semanaIn) {
+    //     System.out.println("Entrou no create");
+    //     System.out.println(semanaIn.toString());
+    //     Semana semana = SemanaParser.toSemana(semanaIn);
+    //     semana.id_usuario(idUser);
+    //     semana = semanaService.create(semana);
+    //     System.out.println("teste2: " + semana.id() + " " + semana.dia_inicio() + " " + semana.dia_fim() + " " + semana.descricao() + " " + semana.id_usuario());
+    //     return ResponseEntity.created(
+    //         ServletUriComponentsBuilder
+    //             .fromCurrentRequest()
+    //             .path("/{id}")
+    //             .buildAndExpand(semana.id())
+    //             .toUri())
+    //         .body(SemanaParser.toSemanaOut(semana));
+    // }
 
     @Override
     @Operation(summary = "Retorna todos os lembretes de uma semana para um usuário", description = "Retorna todos os lembretes de uma semana para um usuário.")
