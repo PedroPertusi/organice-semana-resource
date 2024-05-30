@@ -22,7 +22,7 @@ public class SemanaResource implements SemanaController {
     private SemanaService semanaService;
 
     // @GetMapping("/semana/info")
-    // public ResponseEntity<Map<String, String>> info() {
+    // public ResponseEntity<Map<String, String>> read() {
     //     return new ResponseEntity<>(
     //         Map.ofEntries(
     //             Map.entry("microservice.name", SemanaApplication.class.getSimpleName())
@@ -62,17 +62,17 @@ public class SemanaResource implements SemanaController {
     //     return ResponseEntity.ok(SemanaParser.toSemanaOut(semana));
     // }
 
-    // @Override
-    // @Operation(summary = "Deleta a semana", description = "Deleta a semana no banco de dados.")
-    // public ResponseEntity<Void> delete(@PathVariable("id_semana") String id_semana) {
-    //     semanaService.delete(id_semana);
-    //     return ResponseEntity.noContent().build();
-    // }
+    @Override
+    @Operation(summary = "Deleta a semana", description = "Deleta a semana no banco de dados.")
+    public ResponseEntity<Void> delete(@PathVariable("id_semana") String id_semana) {
+        semanaService.delete(id_semana);
+        return ResponseEntity.noContent().build();
+    }
 
-    // @Override
-    // @Operation(summary = "Retorna os valores da semana", description = "Retorna os valores da semana.")
-    // public ResponseEntity<SemanaOut> read(@PathVariable("id_semana") String id_semana) {
-    //     SemanaOut semanaOut = semanaService.read(id_semana);
-    //     return ResponseEntity.ok(semanaOut);
-    // }
+    @Override
+    @Operation(summary = "Retorna os valores da semana", description = "Retorna os valores da semana.")
+    public ResponseEntity<SemanaOut> read(@PathVariable("id_semana") String id_semana) {
+        SemanaOut semanaOut = semanaService.read(id_semana);
+        return ResponseEntity.ok(semanaOut);
+    }
 }

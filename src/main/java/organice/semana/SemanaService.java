@@ -61,13 +61,11 @@ public class SemanaService {
         return new ResponseEntity<>(allLembretesForWeek, HttpStatus.OK);
     }
 
-    // public void delete(String id_dia) {
-    //     // TODO Auto-generated method stub
-    //     diaRepository.deleteById(id_dia);
-    // }
+    public void delete(String id_semana) {
+        semanaRepository.deleteById(id_semana);
+    }
 
     // public Semana update(String id_dia, Semana dia) {
-    //     // TODO Auto-generated method stub
     //     throw new UnsupportedOperationException("Unimplemented method 'update'");
     // }
 
